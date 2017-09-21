@@ -13,15 +13,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-var connectionString ='mongodb://manognya:manu594@ds035796.mlab.com:35796/manognya_test';
+//var connectionString ='mongodb://manognya:manu594@ds035796.mlab.com:35796/manognya_test';
 
-//
-// if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
-//     var username = process.env.MLAB_USERNAME_WEBDEV; // get from environment
-//     var password = process.env.MLAB_PASSWORD_WEBDEV;
-//     connectionString = 'mongodb://' + username + ':' + password;
-//     connectionString += '@ds035796.mlab.com:35796/manognya_test'; // user yours
-// }
+
+if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
+    var username = process.env.MLAB_USERNAME_WEBDEV; // get from environment
+    var password = process.env.MLAB_PASSWORD_WEBDEV;
+    connectionString = 'mongodb://' + username + ':' + password;
+    connectionString += '@ds035796.mlab.com:35796/manognya_test'; // user yours
+}
 
 var mongoose = require("mongoose");
 mongoose.connect(connectionString);
