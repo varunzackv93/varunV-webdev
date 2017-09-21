@@ -1,0 +1,137 @@
+
+<!-- saved from url=(0055)http://www.ccs.neu.edu/home/kenb/16/spr/5200/foods.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CS 5200 Introduction to Database Management Spring 2016</title>
+<style type="text/css"></style></head>
+<body>
+<center><h1>Examples of HAPL queries to a JSON expression</h1></center>
+<p>
+
+The HAPL language uses an XPath syntax to query either XML documents or JSON
+expressions.  
+
+</p><p>
+
+This is an example of some JSON data representing various foods and drinks at a restaurant:
+
+</p><p>
+
+<a href="http://www.ccs.neu.edu/home/kenb/16/spr/5200/foods.json">http://www.ccs.neu.edu/home/kenb/16/spr/5200/foods.json</a>
+
+</p><p>
+
+Here are some examples of HAPL queries to data in JSON format:
+
+</p><p>
+
+</p><ol>
+
+<li>List the prices of Pizza.
+
+<p>
+
+<code>//Food[name='Pizza']/price</code>
+
+</p><p>
+
+The answer is 8.5.
+
+</p><p>
+
+</p></li><li>Find the drink identifiers of those drinks that are eaten with Steak.
+
+<p>
+
+<code>//Food[name='Steak']/isEatenWith/*/ref</code>
+
+</p><p>
+
+The answer is "d1" and "d2".
+
+</p><p>
+
+</p></li><li>Find names of Foods that have recommended drinks.  In other words,
+list the Foods by name such that there exists an isEatenWith reference.
+
+<p>
+
+<font color="blue">
+
+This illustrates how one can specify "exists" in HAPL.  This is the
+same way that one specifies the existential in XPath 1.0.
+
+</font>
+
+</p><p>
+
+<code>//Food[isEatenWith/*/ref]/name</code>
+
+</p><p>
+
+The answer is "Steak" and "Pizza".
+
+</p><p>
+
+</p></li><li>Find the names of Drinks at a Restaurant that has Foods among which is a Food
+which is eaten with a drink whose identifier begins with "d".
+
+<p>
+
+<font color="blue">
+
+Although there are other ways to specify this query, the following one shows
+that one can nest predicates as deeply as you wish.
+
+</font>
+
+</p><p>
+
+<code>/root/Restaurant[Foods[*[Food[isEatenWith[*[starts-with(ref,'d')]]]]]]/Drinks/*/name</code>
+
+</p><p>
+
+</p></li><li>Find the foods by name that have an excellent rating and have a price under 21.
+
+<p>
+
+<font color="blue">
+
+This illustrates the logical and.  
+
+</font>
+
+</p><p>
+
+<code>//Food[rating='excellent'][price&lt;21]/name</code>
+
+</p><p>
+
+The answer is "Steak".
+
+</p><p>
+
+</p></li><li>Show the first 4 characters of the rating of Steak.
+
+<p>
+
+<font color="blue">
+
+This illustrates string manipulation.
+
+</font>
+
+</p><p>
+
+<code>substring(//Food[name='Steak']/rating,1,4)
+</code>
+
+</p><p>
+
+The answer is "exce".
+
+</p></li></ol>
+
+
+
+
+</body></html>
