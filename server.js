@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-var connectionString ='mongodb://manu:manu594@ds035796.mlab.com:35796/manognya_test';
+var connectionString ='mongodb://manognya:manu594@ds035796.mlab.com:35796/manognya_test';
 
 //
 // if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
