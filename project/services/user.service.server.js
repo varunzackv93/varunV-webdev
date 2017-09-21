@@ -25,9 +25,9 @@ module.exports = function(app,model){
     passport.deserializeUser(deserializeUser);
 
     var googleConfig = {
-        clientID     : "378879608761-kjc747a0kpe5ngsktlrg7hefm27cojdm.apps.googleusercontent.com",
-        clientSecret : "gJjp9wL0PhIZIuPkl-JIB5GT",
-        callbackURL  : "http://127.0.0.1:3000/auth/google/callback"
+        clientID     : "process.env.GOOGLE_CLIENT_ID",
+        clientSecret : "process.env.GOOGLE_CLIENT_SECRET",
+        callbackURL  : "process.env.GOOGLE_CALLBACK_URL"
     };
 
     passport.use(new GoogleStrategy(googleConfig, googleStrategy));
