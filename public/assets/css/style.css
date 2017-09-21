@@ -1,0 +1,72 @@
+header {
+    background-image: url(../ico/67618566-pebbles-wallpapers.jpg);
+}
+
+.form-horizontal .control-label {
+    text-align: left !important;
+}
+
+i.white-icon {
+    color: #fff;
+}
+
+hr {
+    max-width: 20%;
+}
+
+a.white-icon {
+    color: #fff;
+}
+
+.form-action {
+    padding: inherit;
+}
+
+.top-buffer {
+    margin-top: 20px;
+}
+
+input.width-controlled {
+    width: 70%;
+!important;
+}
+
+.nowrap-button {
+    white-space: nowrap;
+}
+
+a.clickable-td {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.about-bg {
+    background-image: url(../ico/Background-Wallpaper-HD-Wallpapers_vVNlOsG.jpg);
+}
+
+.intouch-bg {
+    background-image: url(../ico/blocks.jpg);
+    background-size: cover;
+}
+
+.projects-bg {
+    background-image: url(../ico/waterdrops.jpg);
+    background-size: cover;
+}
+
+@media (max-width : 768px) {
+    .sm-small-image {
+        max-width:60%
+    }
+}
+
+.embed-responsive {
+    width: 80%;
+}
+
+.float-right{
+    float: right!important;
+}

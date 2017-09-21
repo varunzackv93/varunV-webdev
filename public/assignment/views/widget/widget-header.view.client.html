@@ -1,0 +1,70 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                Widget Edit
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="widgetform.$valid && model.updateWidget(model.widget) ;submitted=true" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-sm-9 col-lg-8 col-xs-10 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+
+            <form name="widgetform" novalidate>
+                <div class="form-group">
+                    <label for="widgetname">Name</label>
+                    {{model.widget.name}}
+                    <input name="wheadername" ng-model="model.widget.name" type="text" required class="form-control" id="widgetname" placeholder="name">
+                </div>
+
+                <div ng-show="widgetform.wheadername.$invalid && submitted" class="error">widget header name is required </div>
+
+                <div class="form-group">
+                    <label for="widgettext">Text</label>
+                    <input ng-model="model.widget.text" type="text" class="form-control" id="widgettext" placeholder="widget Title">
+                </div>
+                <div class="form-group">
+                    <label for="widgetsize">Size</label>
+                    <input ng-model="model.widget.size" type="text" class="form-control" id="widgetsize" placeholder="size">
+                </div>
+                <div>
+
+                    <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block" >Delete</a>
+                </div>
+            </form>
+
+            {{wheaderform}}
+            {{submitted}}
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="col-xs-12">
+
+            <a href="#/user/{{model.uid}}" role="button">
+                <span class="glyphicon glyphicon-user pull-right navbar-text"></span>
+                  </a>
+
+
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

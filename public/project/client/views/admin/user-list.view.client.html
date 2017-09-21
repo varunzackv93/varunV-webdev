@@ -1,0 +1,242 @@
+
+<!-- Header -->
+<body id="page-top">
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand med-bold-font">FilmHatch</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll med-bold-font" href="#/home">Home</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="container-fluid top-spacing-large">
+    <div class="container-fluid">
+
+        <div class="input-group">
+            <input ng-model = "model.movieName"
+                   type="text"
+                   placeholder="enter movie name.. Eg: Inception"
+                   class="form-control ng-pristine ng-valid ng-touched">
+            <span class="input-group-btn ">
+                   <a href ="#/search/{{model.movieName}}"
+                      class="btn btn-info makegray"
+                      type="button">
+                       <span class="glyphicon glyphicon-search"></span>
+                   </a>
+                </span>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <div class="container pushdownless">
+
+            <div class="container ">
+
+                <div ng-if="model.createsuccess" class="alert alert-success">
+                    {{model.createsuccess}}
+                </div>
+
+                <h4><b>Create User (Admin/User)</b></h4>
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-12 col-xs-12 paddedfromtop3">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="username"
+                               ng-model="model.username"/>
+                    </div>
+
+                    <div class="col-md-3  col-sm-12 col-xs-12 paddedfromtop3">
+                        <input type="password"
+                               class="form-control"
+                               placeholder="password"
+                               ng-model="model.password"/>
+                    </div>
+
+                    <div class="col-md-3 col-sm-12 col-xs-12 paddedfromtop3">
+                        <select type="string"
+                                class="form-control"
+                                placeholder="Admin/User"
+                                ng-model="model.usertype">
+
+                            <option value="ADMIN">ADMIN</option>
+                            <option value="STUDENT">STUDENT</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 col-sm-12 col-xs-12 paddedfromtop3">
+                        <a ng-click="model.createUser(model.username, model.password, model.usertype)"
+                           class="btn btn-block btn-primary">
+                            Create
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+
+            <div class="container ">
+                <h4 ><b>Manage Users</b></h4>
+                <div ng-if="model.warning" class="alert alert-warning">
+                    {{model.warning}}
+                </div>
+                <div ng-if="model.updatedmessage" class="alert alert-success">
+                    {{model.updatedmessage}}
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <th>Update User</th>
+                        <th>Delete User</th>
+
+                        <th>Username</th>
+
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>User Type</th>
+
+
+                        <tr ng-repeat="user in model.users">
+                            <td><a class="glyphicon glyphicon-ok makeblack"
+                                   ng-click="model.updateUser(user._id, user)"></a>
+                            </td>
+                            <td><a class="glyphicon glyphicon-remove makeblack"
+                                   ng-click="model.deleteUser(user._id)"></a>
+                            </td>
+
+                            <td>
+                                <a class="makeblack"
+                                   href="#/user/profile/{{user.username}}">{{user.username}}</a>
+                            </td>
+
+
+                            <td><input type="text"
+                                       ng-model="user.firstName"
+                                       placeholder="First Name"/></td>
+
+                            <td><input type="text"
+                                       ng-model="user.lastName"
+                                       placeholder="Last Name"/></td>
+
+
+                            <td><input type="text"
+                                       ng-model="user.role"
+                                       placeholder="admin/student"/></td>
+
+
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <div class="container bottom-spacing">
+
+                <div class="container ">
+                    <h4 ><b>Manage Movie Reviews</b></h4>
+                    <div ng-if="model.moviewarning" class="alert alert-warning">
+                        {{model.moviewarning}}
+                    </div>
+                    <div ng-if="model.movieupdatedmessage" class="alert alert-success">
+                        {{model.movieupdatedmessage}}
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <th>Update Review</th>
+                            <th>Delete Review</th>
+
+                            <th>Movie</th>
+                            <th>Reviewed by</th>
+                            <th>Review</th>
+
+
+                            <tr ng-repeat="movie in model.results">
+
+                                <td><a class="glyphicon glyphicon-ok makeblack"
+                                       ng-click="model.updateMovie(movie.tmdbId, movie.userId, movie.text)"></a>
+                                </td>
+                                <td><a class="glyphicon glyphicon-remove makeblack"
+                                       ng-click="model.deleteMovie(movie.tmdbId, movie.userId)"></a>
+                                </td>
+
+                                <!-- Movie-->
+                                <td>
+                                    <a class="makeblack"
+                                       href="#/movie/{{movie.tmdbId}}">{{movie.title}}</a>
+                                </td>
+                                <td>
+                                    <a class="makeblack"
+                                       href="#/user/profile/{{movie.username}}">{{movie.username}}</a>
+                                </td>
+
+                                <td><textarea type="text"
+                                              ng-model="movie.text"
+                                              rows = "4"
+                                              placeholder="Review Text">
+                    </textarea></td>
+
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="w3-row">
+
+        <div class="w3-col l11 m10 s10">
+            <p class=" pull-right">
+                <a
+                   ng-click="model.logout()">
+                    <h4 class="innavbar-left med-bold-font set-black">Logout</h4>
+                </a>
+            </p>
+        </div>
+        <div class="w3-col l1 m2 s2">
+            <p class=" pull-left">
+                <a
+                   href="#/user/{{model.user._id}}">
+                    <h4 class="med-bold-font set-black">Profile</h4>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,95 @@
+
+
+<nav class="navbar navbar-default navbar-fixed-top" >
+    <div class="container-fluid row">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-text pull-left" style="margin-left: 0px;">
+                <a href="#/user/{{model.uid}}/website">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right" style="margin-right: 0px;">
+                <a href="#/user/{{model.uid}}/website/new">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand pull-left" href="#">
+                    Websites
+                </a>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-8">
+            <div class="navbar-header">
+                <a href="#/user/{{model.uid}}/website">
+                    <span class="glyphicon glyphicon-chevron-left navbar-text pull-left hidden-lg hidden-md hidden-sm">
+                    </span>
+
+                </a>
+                <a class="navbar-brand pull-left" href="#">
+                    New Website
+                </a>
+                <a ng-click="websiteform.$valid && model.createWebsite(name,description) ;submitted=true" class="navbar-link">
+                    <span class="glyphicon  glyphicon-ok navbar-text pull-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="row container-fluid" style="padding-top: 30px">
+    <div class="col-sm-4 hidden-xs">
+        <div class="row" ng-repeat="website in model.websites">
+
+            <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                    <label class="label-blue"><a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
+                        {{website.name}}
+                    </a></label>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <a href="#/user/{{model.uid}}/website/{{website._id}}">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    <div class="verticalline hidden-sm hidden-xs"></div>
+
+    <div class="col-sm-8">
+            <form name="websiteform" novalidate>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input name="wname" ng-model="name" type="text" required class="form-control" id="name" placeholder="Name">
+                </div>
+                <div ng-show="websiteform.wname.$invalid && submitted" class="error">website name is required </div>
+
+                <div class="form-group">
+                    <label for="description">Website Description</label>
+                    <textarea ng-model="description" class="form-control" id = "description" rows="3" placeholder="Please enter your Website description here"></textarea>
+                </div>
+                </form>
+
+                    </div>
+
+
+</div>
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="col-xs-12">
+
+            <a href="#/user/{{model.uid}}">
+                <span class="glyphicon glyphicon-user pull-right navbar-text"></span>
+                 </a>
+
+
+        </div>
+    </div>
+</nav>

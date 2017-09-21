@@ -1,0 +1,237 @@
+
+<body id="page-top">
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand med-bold-font">FilmHatch</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll med-bold-font" href="#/home">Home</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+
+
+
+
+
+<!-------------------------------------------------------------------------------------------------------->
+
+<div class="container-fluid backgound-image top-spacing bottom-spacing">
+<h1 class="white-color">
+    <a href="#/home/{{model.movie.title}}">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+
+    {{model.movie.title}}
+</h1>
+
+    <br>
+    <br>
+
+    <div class="container-fluid">
+
+    <div class="w3-container w3-row">
+
+<div class="w3-twothird">
+
+        <div  class="white-color set-size" ng-repeat="crew in model.movie.credits.crew" ng-if="model.showDirector(crew.job)">
+          <strong class="large-size">  Directed by: </strong> &nbsp;&nbsp; {{crew.name}}
+        </div>
+    <p></p>
+        <div class="white-color set-size">
+            <strong class="large-size">   Rated: </strong> &nbsp;&nbsp; {{model.movie.vote_average}}
+        </div>
+<p></p>
+            <div class="white-color set-size">
+                <strong class="large-size">   Runtime(minutes): </strong> &nbsp;&nbsp; {{model.movie.runtime}}
+            </div>
+<p></p>
+
+    <div class="white-color set-size">
+        <strong class="large-size">  Genre:  </strong> &nbsp;
+            <span ng-repeat="genre in model.genres">
+                 {{genre.name}} ,
+            </span>
+        </div>
+<p></p>
+        <div class="white-color set-size">
+            <strong class="large-size">   Released: </strong> &nbsp;&nbsp; {{model.movie.release_date}}
+        </div>
+<p></p>
+
+
+        </div>
+
+        <div class="w3-third">
+            <img class="pop-img img-size" ng-src="https://image.tmdb.org/t/p/w500/{{model.movie.poster_path}}" height="400px"/>
+        </div>
+
+
+    </div>
+
+        <br>
+        <br>
+        <div class="w3-container w3-row white-color set-size">
+            <strong class="large-size">   Plot:</strong> <p></p> {{model.movie.overview}}
+        </div>
+
+    <br>
+    <br>
+    <br>
+        <br>
+
+    <div class="w3-container w3-row">
+        <div class="w3-threequarter video-container">
+            <div class="white-color set-size">
+                <strong class="large-size">   Trailer:</strong>
+                <p></p>
+                <div class="videoWrapper">
+            <iframe  width="800" height="400"
+                     ng-src="{{model.movie.video_path}}"
+                     frameborder="0" allowfullscreen=""></iframe>
+                </div>
+        </div>
+    </div>
+
+    </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="w3-container w3-row">
+            <div class="col-xs-12 white-color set-size">
+                <h3 class="page-header ">Cast</h3>
+                <h2></h2>
+                <ul class="list-inline">
+                    <li class="w92"  ng-repeat="actor in model.movie.credits.cast"
+                        ng-if="actor.profile_path">
+                            <img ng-src="https://image.tmdb.org/t/p/w500/{{actor.profile_path}}">
+                        <a class="title makeblack">{{actor.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+</div>
+
+
+
+
+<!------------------------------------------------------------------------------------------------------------------------>
+
+
+    <a  ng-if="model.loggedIn" class="btn btn-success btn-block white-color set-size"
+        ng-click="model.reviewPage()">Rate and Review this movie</a>
+
+    <p></p>
+    <div ng-if="model.givecheckoutusererror"
+         class="alert alert-danger">
+        {{model.givecheckoutusererror}}
+    </div>
+
+
+    <h3 class="page-header white-color set-size">User Reviews</h3>
+
+    <div ng-repeat = "rev in model.movieInfo.reviews" >
+
+        <div ng-if = "rev.visible=='true'">
+            <div class="row">
+
+                <div  ng-if="model.loggedIn" class="col-xs-9">
+                    <a href="#/user/profile/{{rev.username}}">
+                        <h3 class="glyphicon glyphicon-user makeblack"> {{rev.username}}
+                        </h3>
+                    </a>
+                </div>
+                <div  ng-if="model.notloggedIn" class="col-xs-9">
+                    <a ng-click="model.needtoLoginforProfile()">
+                        <h3 class="glyphicon glyphicon-user makeblack"> {{rev.username}}
+                        </h3>
+                    </a>
+                </div>
+
+            </div>
+
+            <div  class="w3-container w3-row">
+                <div class="col-xs-12">
+                    <p class="white-color set-size">{{rev.text}}</p>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------->
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="w3-row">
+
+        <div class="w3-col l11 m10 s10">
+        <p class=" pull-right">
+            <a ng-if="model.loggedIn"
+               ng-click="model.logout()">
+                <h4 class="innavbar-left med-bold-font set-black">Logout</h4>
+            </a>
+            <a ng-if="model.notloggedIn"
+               href="#/login">
+                <h4 class="innavbar-left med-bold-font set-black">Login</h4>
+
+            </a>
+        </p>
+            </div>
+        <div class="w3-col l1 m2 s2">
+        <p class=" pull-left">
+            <a ng-if="model.loggedIn"
+               href="#/user/{{model.user._id}}">
+                <h4 class="med-bold-font set-black">Profile</h4>
+            </a>
+            <a ng-if="model.notloggedIn"
+               href="#/register">
+                <h4 class="med-bold-font set-black">Register</h4>
+            </a>
+        </p>
+    </div>
+    </div>
+</nav>
+
+<!--
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="col-xs-12">
+
+            <a href="#/user/{{model.uid}}" role="button">
+                <span class="glyphicon glyphicon-user pull-right navbar-text"></span>
+            </a>
+
+
+        </div>
+    </div>
+</nav>-->

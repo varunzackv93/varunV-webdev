@@ -1,0 +1,58 @@
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                New Page
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="pagenewform.$valid && model.createPage(model.name,model.description);submitted=true" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-sm-9 col-lg-8 col-xs-10 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+
+            <form name="pagenewform" novalidate>
+                <div class="form-group">
+                    <label for="pagename">Name</label>
+                    <input name="pname" ng-model="model.name" type="text" class="form-control" required id="pagename" placeholder="Page Name">
+                </div>
+                <div ng-show="pagenewform.pname.$invalid && submitted" class="error">page name is required </div>
+
+                <div class="form-group">
+                    <label for="pagetitle">Title</label>
+                    <input ng-model="model.description" type="text" class="form-control" id="pagetitle" placeholder="Page Title">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="col-xs-12">
+
+            <a href="#/user/{{model.uid}}" role="button">
+                <span class="glyphicon glyphicon-user pull-right navbar-text"></span>
+             </a>
+
+
+        </div>
+    </div>
+</nav>
+

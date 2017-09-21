@@ -1,0 +1,74 @@
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+                </a>
+            </p>
+            <a class="navbar-brand">
+                Choose Widget
+            </a>
+
+        </div>
+    </div>
+</nav>
+
+<ul style="list-style-type:none; padding-top: 50px" >
+    <li class="li-css">
+        <a ng-click="model.createWidget('HEADER')">
+            Header
+        </a>
+    </li>
+    <li class="li-css"><a ng-click="model.createWidget('HEADER')">
+        Label
+    </a>
+    </li>
+    <li class="li-css">
+        <a ng-click="model.createWidget('HTML')">
+            HTML
+        </a>
+    </li>
+    <li class="li-css">
+        <a ng-click="model.createWidget('TEXT')">
+            Text Input
+        </a></li>
+    <li class="li-css">
+        <a ng-click="model.createWidget('HTML')">
+            Link
+        </a> </li>
+    <li class="li-css">
+        <a ng-click="model.createWidget('HTML')">
+            Button
+        </a></li>
+    <li class="li-css">
+        <a ng-click="model.createWidget('IMAGE')">
+        Image
+    </a>
+    <li class="li-css">
+    <a ng-click="model.createWidget('YOUTUBE')">
+       You Tube
+    </a>
+
+    <li class="li-css">Data Table</li>
+    <li class="li-css">Repeater</li>
+</ul>
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="col-xs-12">
+
+            <a href="#/user/{{model.uid}}" role="button">
+                <span class="glyphicon glyphicon-user pull-right navbar-text"></span>
+                  </a>
+
+
+        </div>
+    </div>
+</nav>
+

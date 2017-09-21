@@ -1,0 +1,57 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.uid}}/website" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                Pages
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/new" class="navbar-link">
+          <span class="glyphicon glyphicon-plus">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container-fluid" style="padding-top: 50px">
+
+    <div class="row" ng-repeat="page in model.pages">
+
+        <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+            <div class="col-md-9 col-sm-9 col-xs-9">
+                <label class="label-blue"><a href="#/user/{{model.uid}}/website/{{page._website}}/page/{{page._id}}/widget">
+                    {{page.name}}
+                </a></label>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <a href="#/user/{{model.uid}}/website/{{page._website}}/page/{{page._id}}">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="col-xs-12">
+
+            <a href="#/user/{{model.uid}}" role="button">
+                <span class="glyphicon glyphicon-user pull-right navbar-text"></span>
+                </a>
+
+
+        </div>
+    </div>
+</nav>

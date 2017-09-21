@@ -1,0 +1,137 @@
+
+
+<nav class="navbar navbar-default navbar-fixed-top" >
+    <div class="container-fluid row">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-text pull-left" style="margin-left: 0px;">
+                <a href="#/user/{{model.uid}}/website">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right" style="margin-right: 0px;">
+                <a href="#/user/{{model.uid}}/website/new">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand pull-left" href="#">
+                    Websites
+                </a>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-8">
+            <div class="navbar-header">
+                <a href="#/user/{{model.uid}}/website">
+                    <span class="glyphicon glyphicon-chevron-left navbar-text pull-left hidden-lg hidden-md hidden-sm">
+                    </span>
+
+                </a>
+                <a class="navbar-brand pull-left" href="#">
+                    Edit Website
+                </a>
+                <a ng-click="ewebsiteform.$valid && model.updateWebsite(model.website.name,model.website.description);submitted=true" class="navbar-link">
+                    <span class="glyphicon  glyphicon-ok navbar-text pull-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="row container-fluid" style="padding-top: 30px">
+    <div class="col-sm-4 hidden-xs">
+        <div class="row" ng-repeat="website in model.websites">
+
+            <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                    <label class="label-blue"><a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
+                        {{website.name}}
+                    </a></label>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <a href="#/user/{{model.uid}}/website/{{website._id}}">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--div class="row">
+            <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                    <label class="label-blue">Address Book App</label>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <a href="#/website/234">
+                    <span class="glyphicon glyphicon-cog pull-right"></span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                    <label class="label-blue">Script Testing App</label>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <a href="#/website/345">
+                    <span class="glyphicon glyphicon-cog pull-right"></span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                    <label class="label-blue">Blogger</label>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <a href="#/website/456">
+                    <span class="glyphicon glyphicon-cog pull-right"></span></a>
+                </div>
+            </div>
+                                  </div-->
+
+    </div>
+
+    <div class="verticalline hidden-sm hidden-xs"></div>
+
+    <div class="col-sm-8">
+        <form name="ewebsiteform" novalidate>
+            <div class="form-group">
+                <label for="websitename">Website Name</label>
+                <input name= "ename" ng-model="model.website.name" type="text" required class="form-control" id="websitename" placeholder="Name">
+            </div>
+            <div ng-show="ewebsiteform.ename.$invalid && submitted" class="error">website name is required </div>
+
+            <div class="form-group">
+                <label for="website-description">Website Description</label>
+                <textarea ng-model="model.website.description" class="form-control" id = "website-description" rows="3"
+                          placeholder="Description"></textarea>
+            </div>
+
+            <div>
+
+                <a ng-click="model.deleteWebsite(model.wid)" class="btn btn-danger btn-block" >Delete</a>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="col-xs-12">
+
+            <a href="#/user/{{model.uid}}" class="navbar-link">
+                <span class="glyphicon glyphicon-user pull-right navbar-text"></span>
+            </a>
+
+
+        </div>
+    </div>
+</nav>

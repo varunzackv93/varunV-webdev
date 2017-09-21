@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app="MoviesApp">
+<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+   <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+                         <!-- home-->
+    <script src="views/home/home.controller.js"> </script>
+
+                       <!-- movieDetails-->
+    <script src="views/movieDetails/movieDetails.controller.js"> </script>
+    <script src="views/movieDetails/movieReviews.controller.js"></script>
+
+
+                       <!----user---->
+    <script src="views/user/login.controller.client.js"></script>
+    <script src="views/user/register.controller.client.js"></script>
+    <script src="views/user/profile.controller.client.js"></script>
+    <script src="views/user/FollowingUserProfileController.js"></script>
+
+                         <!---services--->
+    <script src="../client/services/user.service.client.js"></script>
+    <script src="services/movie.service.client.js"> </script>
+    <script src="services/allmovies.service.client.js"> </script>
+
+
+                      <!----- movies-home---->
+    <script src="views/movies-home/movies-new.controller.js"></script>
+
+    <!--------------admin ------>
+    <script src="views/admin/user-list.controller.js"></script>
+
+
+    <link href="../CSS/patros.css" rel="stylesheet"/>
+    <link href="../CSS/style.css" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<!-- Portfolio -->
+<script src="https://cdn.jsdelivr.net/quicksand/1.4/jquery.quicksand.min.js"></script>
+
+
+<script>
+    $(document).ready(function(){
+        $('.custom-menu a[href^="#"], .intro-scroller .inner-link').on('click',function (e) {
+            e.preventDefault();
+            var target = this.hash;
+            var $target = $(target);
+            $('html, body').stop().animate({
+                'scrollTop': $target.offset().top
+            }, 900, 'swing', function () {
+                window.location.hash = target;
+            });
+        });
+        $('a.page-scroll').bind('click', function(event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top
+            }, 1500, 'easeInOutExpo');
+            event.preventDefault();
+        });
+        $(".nav a").on("click", function(){
+            $(".nav").find(".active").removeClass("active");
+            $(this).parent().addClass("active");
+        });
+        $('body').append('<div id="toTop" class="btn btn-primary color1"><span class="glyphicon glyphicon-chevron-up"></span></div>');
+        $(window).scroll(function () {
+            if ($(this).scrollTop() != 0) {
+                $('#toTop').fadeIn();
+            } else {
+                $('#toTop').fadeOut();
+            }
+        });
+        $('#toTop').click(function(){
+            $("html, body").animate({ scrollTop: 0 }, 700);
+            return false;
+        });
+    });
+</script>
+
+</body>
+
+    <div ng-view>
+
+    </div>

@@ -1,0 +1,70 @@
+
+
+<nav class="navbar navbar-default navbar-fixed-top" >
+    <div class="container-fluid row">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-text pull-left" style="margin-left: 0px;">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right" style="margin-right: 0px;">
+                <a href="#">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand pull-left" href="#">
+                    HTML-widget
+                </a>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-8">
+            <div class="navbar-header">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget">
+                    <span class="glyphicon glyphicon-chevron-left navbar-text pull-left hidden-lg hidden-md hidden-sm">
+                    </span>
+
+                </a>
+                <a class="navbar-brand pull-left" href="#">
+                    Edit Widget
+                </a>
+                <a ng-click="widgetform.$valid && model.updateWidget(model.widget);submitted=true">
+                    <span class="glyphicon  glyphicon-ok navbar-text pull-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<div class="container">
+
+    <div ng-model="model.widget.text"
+         text-angular
+         ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+
+    </div>
+
+
+</div>
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="col-xs-12">
+
+            <a href="#/user/{{model.uid}}">
+                <span class="glyphicon glyphicon-user pull-right navbar-text"></span>
+            </a>
+
+
+        </div>
+    </div>
+</nav>

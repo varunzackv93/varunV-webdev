@@ -1,0 +1,160 @@
+
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand med-bold-font">FilmHatch</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll med-bold-font" href="#/home">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<!--
+<div class="container-fluid" style="padding-top: 50px">
+    <div class="row">
+        <div class="col-md-8 col-sm-9 col-lg-8 col-xs-10 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+            <form>
+                <div class="form-group">
+                    <label for="username">User name</label>
+                    <input ng-model="model.user.username" type="text" class="form-control" id="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <label for="e-mail">E-mail</label>
+                    <input type="email" class="form-control" id="e-mail" placeholder="manognyakoduganti@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label for="first name">First name</label>
+                    <input ng-model="model.user.firstName" type="text" class="form-control" id="first name" placeholder="manognya">
+                </div>
+                <div class="form-group">
+                    <label for="last name">Last name</label>
+                    <input ng-model="model.user.lastName" type="text" class="form-control" id="last name" placeholder="koduganti">
+                </div>
+                <div>
+                    <a class="btn btn-primary btn-block" href="#/user/{{model.user._id}}/website" >Websites</a>
+                    <a ng-click = "model.UnregisterUser()" class="btn btn-danger btn-block"  >UnRegister</a>
+                    <a class="btn btn-danger btn-block" ng-click="model.logout()" >Logout</a>
+                    <a class="btn btn-warning btn-block"
+                       ng-show="model.user.role=='ADMIN'"
+                       href="#/admin">Admin</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>-->
+
+<!--Body-->
+<div class="container-fluid setprofilebg" style="padding-top:100px; padding-left:50px; margin-bottom: 100px">
+        <div class="input-group">
+            <input ng-model = "model.movieName"
+                   type="text"
+                   placeholder="enter movie name.. Eg: Inception"
+                   class="form-control ng-pristine ng-valid ng-touched">
+            <span class="input-group-btn ">
+                   <a href ="#/home/{{model.movieName}}"
+                      class="btn btn-info makegray"
+                      type="button">
+                       <span class="glyphicon glyphicon-search"></span>
+                   </a>
+                </span>
+        </div>
+        <h2 class="page-header bold-font">Welcome {{model.user.firstName}}  </h2>
+
+        <div class="container-fluid">
+            <h3 class="med-bold-font">Your Reviews</h3>
+
+            <div ng-if="model.norates">
+                You have not rated any movie so far
+            </div>
+            <div ng-repeat="reviews in model.user.reviews" class="row">
+
+
+                <a class="makeblack" href="#/movieDetails/{{reviews.movie_Id}}/{{reviews.movie_name}}">
+                    <div class="col-xs-4">
+                        <img ng-src="{{reviews.movie_url}}" width = 70>
+                        <h5>{{reviews.movie_name}}</h5>
+
+                    </div>
+                </a>
+
+
+                <div class="col-xs-8">
+                    <h4>{{reviews.movie_review}}</h4>
+                </div>
+                <p></p>
+            </div>
+        </div>
+
+
+        <!-- Users Ratings -->
+        <div class="container-fluid">
+            <h3 class="med-bold-font">Your Ratings</h3>
+            <div ng-if="model.norates">
+                You have not reviewed any movie so far!
+            </div>
+            <div ng-repeat="rates in model.user.rates" class="row">
+                <a class="makeblack" href="#/movieDetails/{{rates.movie_Id}}/{{rates.movie_name}}">
+                    <div class="col-xs-5">
+                        <img ng-src="{{rates.movie_url}}" width = 70>
+                        <h5>You rated: {{rates.movie_rating}}/5</h5>
+                    </div>
+                </a>
+                <p></p>
+
+            </div>
+
+        </div>
+
+
+        <div class="container-fluid" style="padding-bottom: 150px">
+            <h3 class="med-bold-font">You are Following</h3>
+            <div ng-if="model.nofollowers">
+                You have not followed anyone so far!
+            </div>
+            <div ng-repeat ="follow in model.user.follows">
+                <li>
+                    <a class="makeblack" href ="#/user/profile/{{follow.username}}">
+                        {{follow.username}}
+                    </a>
+                </li>
+
+            </div>
+        </div>
+
+    <a ng-show="model.user.role== 'ADMIN'" class="btn btn-primary btn-block" href="#/admin">Admin</a>
+
+
+
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="w3-row">
+
+        <div class="w3-col l11 m10 s10">
+            <p class=" pull-right">
+                <a
+                   ng-click="model.logout()">
+                    <h4 class="innavbar-left med-bold-font set-black">Logout</h4>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>

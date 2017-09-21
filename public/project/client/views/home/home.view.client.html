@@ -1,0 +1,109 @@
+<div>
+    <div class="wrapper sethomebg">
+        <div id="carousel">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <div class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators txt-no-wrap">
+                        <li ng-repeat="movie in model.movies" data-target="#carousel-example-generic" data-slide-to= "{{$index}}" ng-class="{{!$index}} ? 'active' : 'none'"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item slider-size" ng-class="{{!$index}} ? 'active' : 'none'" ng-repeat="movie in model.movies">
+                            <img class="carousel-img" ng-src="http://image.tmdb.org/t/p/original{{movie.backdrop_path}}" alt="Awesome Image">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    <section>
+        <div class="container container-fluid">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10">
+                    <div class="text-center">
+
+                        <div class="container-fluid">
+                           <p></p>
+                            <br>
+
+                            <div class="input-group">
+                                <input ng-model="model.title" type="text" class="form-control search-input" placeholder="Search for...">
+                                <span class="input-group-btn">
+        <button ng-click="model.searchMovieByTitle(title)" class="btn btn-default search-button" type="button">Go!</button>
+      </span>
+                            </div>
+                            </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="text-center color-elements">
+        <h2  ng-if="!model.title">Most Popular Movies Over the Internet</h2>
+        <h2 ng-if="model.title">Search Results</h2>
+    </div>
+    <br>
+    <div class="container container-fluid ">
+        <div class="col-xs-offset-2 col-xs-10 col-lg-offset-0 col-lg-5 col pupular-div popular-view"
+             ng-repeat="movie in model.pmovies">
+            <div>
+                <img class="pop-img img-size" ng-src="http://image.tmdb.org/t/p/original{{movie.poster_path}}"/>
+            </div>
+                <!---- model link-------->
+
+                  <!--  <a href="#/home1" class="launch-modal" data-modal-id="modal-video">
+                        <span class="glyphicon glyphicon-play-circle"></span>
+                </a>
+-->
+                <!------model link------->
+<p></p>
+            <div class="home-popular-title">
+                <a href="#/movieDetails/{{movie.id}}/{{movie.title}}">{{movie.title}}</a><br>
+                <a> <strong>Release Date:</strong> {{movie.release_date}}</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="include-view"></div>
+</div>
+</div>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="w3-row">
+
+        <div class="w3-col l11 m10 s10">
+            <p class=" pull-right">
+                <a ng-if="model.loggedIn"
+                   ng-click="model.logout()">
+                    <h4 class="innavbar-left med-bold-font set-black">Logout</h4>
+                </a>
+                <a ng-if="model.notloggedIn"
+                   href="#/login">
+                    <h4 class="innavbar-left med-bold-font set-black">Login</h4>
+                </a>
+            </p>
+        </div>
+        <div class="w3-col l1 m2 s2">
+            <p class=" pull-left">
+                <a ng-if="model.loggedIn"
+                   href="#/user/{{model.user._id}}">
+                    <h4 class="med-bold-font set-black">Profile</h4>
+                </a>
+                <a ng-if="model.notloggedIn"
+                   href="#/register">
+                    <h4 class="med-bold-font set-black">Register</h4>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>

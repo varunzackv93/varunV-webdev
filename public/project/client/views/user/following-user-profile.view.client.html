@@ -1,0 +1,188 @@
+
+<!-- Header -->
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand med-bold-font">FilmHatch</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll med-bold-font" href="#/home">Home</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<!-- End of Header-->
+
+<!--Body-->
+<div class="container-fluid pushdown" style="padding-top: 100px">
+    <div class="container-fluid">
+        <!-- Search Box -->
+       <!-- <div class="input-group">
+            <input ng-model = "model.movieName"
+                   type="text"
+                   placeholder="enter movie name.. Eg: Inception"
+                   class="form-control ng-pristine ng-valid ng-touched">
+            <span class="input-group-btn ">
+                   <a href ="#/search/{{model.movieName}}"
+                      class="btn btn-info makegray"
+                      type="button">
+                       <span class="glyphicon glyphicon-search"></span>
+                   </a>
+                </span>
+        </div>-->
+
+        <div class="row">
+            <div class="col-xs-8">
+                <h2 class="page-header">{{model.user.firstName}} Profile </h2>
+
+
+                <a ng-if="model.notfollowing"
+                   ng-click="model.followUser()"
+                   class="btn btn-primary btn-sm" type="submit">
+                    <span class="glyphicon glyphicon glyphicon-heart"></span>
+                    Follow</a>
+
+
+
+                <a ng-if="model.following"
+                   ng-click="model.unfollowUser()"
+                   class="btn btn-primary btn-sm" type="submit">
+                    <span class="fa fa-heartbeat"></span>
+                    UnFollow {{model.user.firstName}} </a>
+
+
+                <p></p>
+                <div ng-if="model.error"
+                     class="alert alert-danger">
+                    {{model.error}}
+                </div>
+                <p></p>
+                <div ng-if="model.success"
+                     class="alert alert-success">
+                    {{model.success}}
+                </div>
+
+
+
+
+
+
+                </a>
+            </div>
+
+        </div>
+        <!-- Users Reviews -->
+        <div class="container-fluid">
+            <h3>{{model.user.firstName}} Reviews</h3>
+
+            <div ng-repeat="reviews in model.user.reviews" class="row">
+
+
+                <a href="#/home/{{model.movie.title}}">
+                    <div class="col-xs-4">
+                        <img ng-src="{{reviews.movie_url}}" width = auto>
+                        <h3>{{reviews.movie_name}}</h3>
+
+                    </div>
+                </a>
+
+                <div class="col-xs-8">
+                    <h3>{{reviews.movie_review}}</h3>
+                </div>
+                <p></p>
+            </div>
+        </div>
+
+
+        <!-- Users Ratings -->
+        <div class="container-fluid">
+            <h3>{{model.user.firstName}} Ratings</h3>
+
+            <div ng-repeat="rates in model.user.rates" class="row">
+
+                <a class="makeblack" href="#/home/{{rates.title}}">
+                    <div class="col-xs-5">
+                        <img ng-src="{{rates.movie_url}}" width = 70>
+
+                        <h5>{{model.user.firstName}} rated: {{rates.movie_rating}}/5</h5>
+                    </div>
+                </a>
+                <p></p>
+
+            </div>
+
+        </div>
+
+
+        <div class="container-fluid" style="padding-bottom: 100px">
+            <h3>{{model.user.firstName}} Follows</h3>
+            <div ng-repeat ="follow in model.user.follows">
+
+                <li>
+                    <a class="makeblack" href ="#/user/profile/{{follow.username}}">
+                        {{follow.username}}
+                    </a>
+                </li>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!--End Of Body-->
+
+
+<!-- Footer -->
+
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="w3-row">
+
+        <div class="w3-col l11 m10 s10">
+            <p class=" pull-right">
+                <a ng-if="model.loggedIn"
+                   ng-click="model.logout()">
+                    <h4 class="innavbar-left med-bold-font set-black">Logout</h4>
+                </a>
+                <a ng-if="model.notloggedIn"
+                   href="#/login">
+                    <h4 class="innavbar-left med-bold-font set-black">Login</h4>
+
+                </a>
+            </p>
+        </div>
+        <div class="w3-col l1 m2 s2">
+            <p class=" pull-left">
+                <a ng-if="model.loggedIn"
+                   href="#/user/{{model.user._id}}">
+                    <h4 class="med-bold-font set-black">Profile</h4>
+                </a>
+                <a ng-if="model.notloggedIn"
+                   href="#/register">
+                    <h4 class="med-bold-font set-black">Register</h4>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+
+
+<!-- End of footer-->
